@@ -1,6 +1,6 @@
 package com.codecool.snake;
 
-import com.codecool.snake.entities.enemies.SecondEnemy;
+import com.codecool.snake.entities.enemies.WillFerrellEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
@@ -26,7 +26,8 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(40);
+        spawnSimpleEnemy(4);
+        spawnWillFerrellEnemy(4);
         spawnPowerUps(4);
 
         GameLoop gameLoop = new GameLoop(snake);
@@ -44,9 +45,12 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies/2; ++i) new SimpleEnemy();
-        for(int i = 0; i < numberOfEnemies/2; ++i) new SecondEnemy();
+    private void spawnSimpleEnemy(int numberOfEnemies) {
+        for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+    }
+
+    public void spawnWillFerrellEnemy(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new WillFerrellEnemy();
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
