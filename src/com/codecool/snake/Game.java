@@ -16,6 +16,7 @@ import java.awt.*;
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+    private Snake snake2=null;
 
 
     public Game() {
@@ -65,6 +66,8 @@ public class Game extends Pane {
 
     private void spawnSnake() {
         snake = new Snake(new Vec2d(500, 500));
+        snake2 = new Snake(new Vec2d(600, 600));
+
     }
 
     private void spawnEnemies(int numberOfEnemies) {
