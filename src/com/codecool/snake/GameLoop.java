@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 
 import java.util.List;
@@ -30,9 +31,21 @@ public class GameLoop {
                 }
             }
             checkCollisions();
+            checkPowerUps();
+
         }
 
         Globals.getInstance().display.frameFinished();
+    }
+
+    private void checkPowerUps() {
+        List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
+        for (int i = 0; i < gameObjs.size(); i++) {
+            //GameEntity objToCheck = gameObjs.get(i);
+            if (SimplePowerUp.getNumOfPowerUps() <= 2) {
+                Globals.getInstance().game.spawnPowerUps(Globals.getInstance().random.nextInt(5));
+            }
+        }
     }
 
     private void checkCollisions() {

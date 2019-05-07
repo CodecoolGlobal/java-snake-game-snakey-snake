@@ -4,6 +4,8 @@ import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
+import java.util.Random;
+
 // class for holding all static stuff
 public class Globals {
     private static Globals instance = null;
@@ -13,6 +15,7 @@ public class Globals {
 
     public Display display;
     public Game game;
+    public Random random = new Random();
 
     private GameLoop gameLoop;
     private Resources resources;

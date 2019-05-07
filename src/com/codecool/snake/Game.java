@@ -71,8 +71,8 @@ public class Game extends Pane {
         for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    private void spawnPowerUps(int numberOfPowerUps) {
-        for (int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+    void spawnPowerUps(int numberOfPowerUps) {
+        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
     private void setupInputHandling() {
