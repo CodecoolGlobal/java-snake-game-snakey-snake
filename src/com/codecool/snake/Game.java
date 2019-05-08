@@ -26,8 +26,8 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnSimpleEnemy(4);
-        spawnWillFerrellEnemy(4);
+        spawnSimpleEnemy(0);
+        spawnWillFerrellEnemy(1);
         spawnPowerUps(4);
 
         GameLoop gameLoop = new GameLoop(snake);

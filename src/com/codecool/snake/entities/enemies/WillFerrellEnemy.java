@@ -37,9 +37,19 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
     @Override
     public void step() {
         if (isOutOfBounds()) {
-            direction += 90;
-            //speed += 0.1;
-            heading = Utils.directionToVector(direction + 45, speed);
+            /*if (direction - 180 < 0) {
+                direction += 360;
+            }*/
+
+            if (collideVertical()) {
+                direction = 180 - (direction - 180);
+            }
+
+            if (collideHorizontal()) {
+                    direction = 180 - direction;
+            }
+            speed += 0.1;
+            heading = Utils.directionToVector(direction, speed);
 
         }
             setX(getX() + heading.getX());

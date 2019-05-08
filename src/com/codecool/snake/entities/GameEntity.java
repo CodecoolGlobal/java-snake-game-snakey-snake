@@ -33,7 +33,18 @@ public abstract class GameEntity extends ImageView {
         return false;
     }
 
-    /*public collideWithWall() {
-        if ()
-    }*/
+    public boolean collideVertical() {
+        if (getX() > Globals.WINDOW_WIDTH || getX() < 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean collideHorizontal() {
+        if (getY() > Globals.WINDOW_HEIGHT || getY() < 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
