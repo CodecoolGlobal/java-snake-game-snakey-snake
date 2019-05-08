@@ -4,15 +4,18 @@ import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
+import java.util.Random;
+
 // class for holding all static stuff
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1600;
+    public static final double WINDOW_HEIGHT = 900;
 
     public Display display;
     public Game game;
+    public Random random = new Random();
 
     private GameLoop gameLoop;
     private Resources resources;
@@ -41,6 +44,7 @@ public class Globals {
     public void startGame() { gameLoop.start(); }
 
     public void stopGame() { gameLoop.stop(); }
+
 
     private Globals() {
         // singleton needs the class to have private constructor
