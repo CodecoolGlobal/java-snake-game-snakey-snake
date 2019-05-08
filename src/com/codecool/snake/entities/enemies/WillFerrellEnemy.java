@@ -18,28 +18,32 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
 
     private Point2D heading;
     private static Random rnd = new Random();
+    private double speed = 3;
+    private double direction = rnd.nextDouble() * 360;
 
     public WillFerrellEnemy() {
-        super(100);
+        super(10);
 
         setImage(Globals.getInstance().getImage("WillFerrellEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
-        double direction = rnd.nextDouble() * 360;
+
         setRotate(direction);
 
-        double speed = 2.2;
         heading = Utils.directionToVector(direction, speed);
     }
 
     @Override
     public void step() {
         if (isOutOfBounds()) {
-            destroy();
+            direction += 90;
+            //speed += 0.1;
+            heading = Utils.directionToVector(direction + 45, speed);
+
         }
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
+            setX(getX() + heading.getX());
+            setY(getY() + heading.getY());
     }
 
     @Override

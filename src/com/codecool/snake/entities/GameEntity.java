@@ -32,4 +32,8 @@ public abstract class GameEntity extends ImageView {
         }
         return false;
     }
+
+    /*public collideWithWall() {
+        if ()
+    }*/
 }
