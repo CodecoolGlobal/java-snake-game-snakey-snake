@@ -46,6 +46,12 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
+//            for(int i = 0; i < 10; i++) {
+//                Snake.setSpeed(Globals.getInstance().random.nextInt(6));
+//                if (Snake.getSpeed() < 2) {
+//                    Snake.setSpeed(2);
+//                }
+//            }
             snake.addPart(4);
         }
     }
