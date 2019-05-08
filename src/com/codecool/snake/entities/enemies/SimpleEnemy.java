@@ -6,6 +6,7 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
+
 import java.util.Random;
 
 import javafx.geometry.Point2D;
@@ -42,8 +43,19 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     }
 
     @Override
+    public void stepForOtherSnake() {
+        if (isOutOfBounds()) {
+            destroy();
+        }
+        setX(getX() + heading.getX());
+        setY(getY() + heading.getY());
+    }
+
+
+
+    @Override
     public void apply(GameEntity entity) {
-        if(entity instanceof SnakeHead){
+        if (entity instanceof SnakeHead) {
             System.out.println(getMessage());
             destroy();
         }

@@ -10,9 +10,13 @@ import java.util.List;
 
 public class GameLoop {
     private Snake snake;
+    private Snake secondSnake;
     private boolean running = false;
 
-    public GameLoop(Snake snake) { this.snake = snake; }
+    public GameLoop(Snake snake, Snake secondSnake) {
+        this.snake = snake;
+        this.secondSnake = secondSnake;
+    }
 
     public void start() {
         running = true;
@@ -25,6 +29,7 @@ public class GameLoop {
     public void step() {
         if(running) {
             snake.step();
+            secondSnake.stepForOtherSnake();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();

@@ -39,12 +39,31 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
+
+    }
+
+    public void stepForOtherSnake() {
+        SnakeControl turnDir = getUserInputForOtherSnake();
+        head.updateRotation(turnDir, speed);
+
+        updateSnakeBodyHistory();
+        checkForGameOverConditions();
+
+        body.doPendingModifications();
     }
 
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        return turnDir;
+    }
+
+
+    private SnakeControl getUserInputForOtherSnake(){
+        SnakeControl turnDir = SnakeControl.INVALID;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
     }
 
