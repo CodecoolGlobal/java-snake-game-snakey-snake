@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 import javafx.scene.image.Image;
 
-
 public class Resources {
     private HashMap<String, Image> images = new HashMap<String, Image>();
 
@@ -17,4 +16,5 @@ public class Resources {
         if(result == null) System.out.println("ERROR: Image not found: " + name);
         return result;
     }
+
 }

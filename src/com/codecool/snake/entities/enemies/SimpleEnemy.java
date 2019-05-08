@@ -24,7 +24,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
-        double direction = rnd.nextDouble() * 360;
+        double direction = rnd.nextDouble() * 180;
         setRotate(direction);
 
         int speed = 1;
@@ -34,7 +34,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     @Override
     public void step() {
         if (isOutOfBounds()) {
-            destroy();
+            heading = Utils.directionToVector(super.getRotate() * -0.5, 1);
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());

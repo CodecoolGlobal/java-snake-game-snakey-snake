@@ -30,6 +30,6 @@ public abstract class GameEntity extends ImageView {
             getY() > Globals.WINDOW_HEIGHT || getY() < 0) {
             return true;
         }
-        return false;
+        else { return false; }
     }
 }
