@@ -17,7 +17,7 @@ import jdk.nashorn.internal.objects.Global;
 
 
 public class Snake implements Animatable {
-    private static final float speed = 2;
+    private static float speed = 2;
     private int health = 100;
 
     private SnakeHead head;
@@ -91,5 +91,13 @@ public class Snake implements Animatable {
 
         if(result != null) return result;
         return head;
+    }
+
+    public static void setSpeed(float speed) {
+        Snake.speed = speed;
+    }
+
+    public static float getSpeed() {
+        return speed;
     }
 }
