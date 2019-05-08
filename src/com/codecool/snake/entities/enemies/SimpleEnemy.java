@@ -9,7 +9,6 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
 import javafx.geometry.Point2D;
-import jdk.nashorn.internal.ir.WhileNode;
 
 
 public class SimpleEnemy extends Enemy implements Animatable, Interactable {
