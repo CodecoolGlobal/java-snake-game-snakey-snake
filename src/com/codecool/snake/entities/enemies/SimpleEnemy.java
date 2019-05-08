@@ -9,7 +9,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
 import javafx.geometry.Point2D;
-
+import jdk.nashorn.internal.ir.WhileNode;
 
 
 public class SimpleEnemy extends Enemy implements Animatable, Interactable {
@@ -29,10 +29,12 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
         int speed = 1;
         heading = Utils.directionToVector(direction, speed);
+
     }
 
     @Override
     public void step() {
+
         if (isOutOfBounds()) {
             destroy();
         }
