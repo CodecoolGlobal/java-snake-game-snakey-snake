@@ -2,8 +2,9 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.Police;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.PowerUp3;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
-import com.codecool.snake.entities.powerups.powerUp2;
+import com.codecool.snake.entities.powerups.PowerUp2;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -11,8 +12,6 @@ import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
-
-import java.awt.*;
 
 
 public class Game extends Pane {
@@ -51,9 +50,11 @@ public class Game extends Pane {
     public void init() {
         spawnSnake();
         spawnEnemies(2);
+        spawnPolice(2);
         spawnPowerUps(2);
         spawnPowerUps2(3);
-        spawnPolice(2);
+        spawnPowerUps3(2);
+
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -82,8 +83,10 @@ public class Game extends Pane {
     }
 
     private void spawnPowerUps2(int numberOfPowerUps2) {
-        for(int i = 0; i < numberOfPowerUps2; ++i) new powerUp2();
+        for(int i = 0; i < numberOfPowerUps2; ++i) new PowerUp2();
     }
+
+    private void spawnPowerUps3(int numberOfPowerUps3) {for(int i = 0; i < numberOfPowerUps3; ++i) new PowerUp3(); }
 
 
     private void setupInputHandling() {
