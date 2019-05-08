@@ -1,13 +1,19 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
+import com.codecool.snake.Display;
+import com.codecool.snake.Game;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
+import jdk.nashorn.internal.objects.Global;
 
 
 public class Snake implements Animatable {
@@ -58,10 +64,18 @@ public class Snake implements Animatable {
     }
 
     private void checkForGameOverConditions() {
-        if (head.isOutOfBounds() || health <= 0) {
-            System.out.println("Game Over");
-            Globals.getInstance().stopGame();
-        }
+
+            if (head.isOutOfBounds() || health <= 0) {
+                System.out.println("Game Over");
+                Globals.getInstance().stopGame();
+            Text  over = new Text("Game Over \n Press the 'Restart' Button");
+            over.setFill(Color.GREEN);
+            over.setStyle("-fx-font: 65 arial;");
+            over.setY(Globals.WINDOW_HEIGHT-300);
+            over.setX(Globals.WINDOW_WIDTH-700);
+            Globals.getInstance().display.add(over);
+
+            }
     }
 
     private void updateSnakeBodyHistory() {
