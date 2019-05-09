@@ -1,11 +1,13 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.WillFerrellEnemy;
 import com.codecool.snake.entities.enemies.Police;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.PowerUp3;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.PowerUp2;
 import com.codecool.snake.entities.snakes.Snake;
+import com.codecool.snake.entities.snakes.SnakeBody;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
@@ -51,13 +53,12 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(2);
+        spawnSimpleEnemy(4);
+        spawnWillFerrellEnemy(4);
         spawnPolice(2);
         spawnPowerUps(2);
         spawnPowerUps2(3);
         spawnPowerUps3(2);
-
-
 
         GameLoop gameLoop = new GameLoop(snake, secondSnake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -76,8 +77,12 @@ public class Game extends Pane {
         secondSnake = new Snake(new Vec2d(600, 500));
     }
 
-    void spawnEnemies(int numberOfEnemies) {
+    public void spawnSimpleEnemy(int numberOfEnemies) {
         for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+    }
+
+    public void spawnWillFerrellEnemy(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new WillFerrellEnemy();
     }
 
     void spawnPolice(int numberOfPolice) { for (int i = 0; i < numberOfPolice; ++i) new Police(); }

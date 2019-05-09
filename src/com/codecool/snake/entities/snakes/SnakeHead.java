@@ -8,8 +8,8 @@ import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.Police;
 import com.codecool.snake.entities.powerups.PowerUp3;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
-
 import com.codecool.snake.entities.powerups.PowerUp2;
+
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -19,7 +19,6 @@ import javafx.scene.text.Text;
 public class SnakeHead extends GameEntity implements Interactable {
     private static final float turnRate = 2;
     private Snake snake;
-
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;
         setImage(Globals.getInstance().getImage("SnakeHead"));
@@ -47,8 +46,8 @@ public class SnakeHead extends GameEntity implements Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof Enemy){
             System.out.println(getMessage());
-            snake.changeHealth(((Enemy) entity).getDamage());
-
+            snake.changeHealth(((Enemy) entity).getDamage()*(-1));
+            System.out.println(snake.getHealth());
         }
         if (entity instanceof Police) {
             System.out.println(getMessage());
@@ -56,13 +55,11 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
-//            for(int i = 0; i < 10; i++) {
-//                Snake.setSpeed(Globals.getInstance().random.nextInt(6));
-//                if (Snake.getSpeed() < 2) {
-//                    Snake.setSpeed(2);
-//                }
-//            }
             snake.addPart(4);
+        }
+        if(entity instanceof SnakeBody && ((SnakeBody) entity).getBodyPartID() > 3) {
+            System.out.println("Oh no! Marky Mark stepped on his own casettes! :(");
+            snake.changeHealth(-100);
         }
         if (entity instanceof PowerUp2) {
             System.out.println(getMessage());
@@ -88,4 +85,5 @@ public class SnakeHead extends GameEntity implements Interactable {
     public String getMessage() {
         return "IMMA SNAEK HED! SPITTIN' MAH WENOM! SPITJU-SPITJU!";
     }
+
 }

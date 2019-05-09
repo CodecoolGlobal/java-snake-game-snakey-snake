@@ -20,6 +20,8 @@ import javax.swing.*;
 
 import static java.awt.Color.cyan;
 
+import java.util.Random;
+
 
 public class Snake implements Animatable {
     private static float speed = 2;
@@ -27,7 +29,7 @@ public class Snake implements Animatable {
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
-
+    //public SnakeBody neck = (SnakeBody) body.getNeck();
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
@@ -78,14 +80,31 @@ public class Snake implements Animatable {
 
         for (int i = 0; i < numParts; i++) {
             SnakeBody newBodyPart = new SnakeBody(position);
+            if (getLastPart() instanceof SnakeHead) {
+                newBodyPart.setBodyPartID(i);
+            } else {
+                SnakeBody tail = (SnakeBody) getLastPart();
+                if (tail.getBodyPartID() > 0) {
+                    newBodyPart.setBodyPartID(tail.getBodyPartID()+1);
+                } else {
+                    newBodyPart.setBodyPartID(i);
+                }
+            }
             body.add(newBodyPart);
+
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
 
     public void changeHealth(int diff) {
         health += diff;
+        if (health > 100) {
+            health = 100;
+        }
+    }
 
+    public int getHealth() {
+        return health;
     }
 
     private void checkForGameOverConditions() {
@@ -96,7 +115,7 @@ public class Snake implements Animatable {
 
             }
     }
-
+;
     private void updateSnakeBodyHistory() {
         GameEntity prev = head;
         for(GameEntity currentPart : body.getList()) {
