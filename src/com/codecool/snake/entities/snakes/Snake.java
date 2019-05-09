@@ -9,14 +9,17 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.input.KeyCode;
 
+import java.util.Random;
+
 
 public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
 
+
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
-
+    //public SnakeBody neck = (SnakeBody) body.getNeck();
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
@@ -48,7 +51,9 @@ public class Snake implements Animatable {
 
         for (int i = 0; i < numParts; i++) {
             SnakeBody newBodyPart = new SnakeBody(position);
+            newBodyPart.setBodyPartID(new Random().nextInt());
             body.add(newBodyPart);
+
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
@@ -67,7 +72,7 @@ public class Snake implements Animatable {
             Globals.getInstance().stopGame();
         }
     }
-
+;
     private void updateSnakeBodyHistory() {
         GameEntity prev = head;
         for(GameEntity currentPart : body.getList()) {
@@ -81,5 +86,9 @@ public class Snake implements Animatable {
 
         if(result != null) return result;
         return head;
+    }
+
+    public GameEntity getNeck() {
+        return body.getNeck();
     }
 }

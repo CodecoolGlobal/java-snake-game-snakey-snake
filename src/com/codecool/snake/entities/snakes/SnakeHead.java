@@ -6,7 +6,6 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
-
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
@@ -14,7 +13,6 @@ import javafx.geometry.Point2D;
 public class SnakeHead extends GameEntity implements Interactable {
     private static final float turnRate = 2;
     private Snake snake;
-
     public SnakeHead(Snake snake, Vec2d position) {
         this.snake = snake;
         setImage(Globals.getInstance().getImage("SnakeHead"));
@@ -49,10 +47,16 @@ public class SnakeHead extends GameEntity implements Interactable {
             System.out.println(getMessage());
             snake.addPart(4);
         }
+
+        if(entity instanceof SnakeBody && !entity.equals(snake.getNeck())) {
+            System.out.println("dead");
+        }
+
     }
 
     @Override
     public String getMessage() {
         return "IMMA SNAEK HED! SPITTIN' MAH WENOM! SPITJU-SPITJU!";
     }
+
 }

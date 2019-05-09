@@ -22,7 +22,7 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
     private double direction = rnd.nextDouble() * 360;
 
     public WillFerrellEnemy() {
-        super(10);
+        super(25);
 
         setImage(Globals.getInstance().getImage("WillFerrellEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
@@ -48,9 +48,8 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
             if (collideHorizontal()) {
                     direction = 180 - direction;
             }
-            speed += 0.1;
+            speed += 0.2;
             heading = Utils.directionToVector(direction, speed);
-
         }
             setX(getX() + heading.getX());
             setY(getY() + heading.getY());

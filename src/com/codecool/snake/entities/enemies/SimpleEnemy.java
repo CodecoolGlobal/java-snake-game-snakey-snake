@@ -34,6 +34,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     @Override
     public void step() {
         if (isOutOfBounds()) {
+            Globals.getInstance().game.spawnSimpleEnemy(1);
             destroy();
         }
         setX(getX() + heading.getX());
@@ -44,6 +45,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
+            Globals.getInstance().game.spawnSimpleEnemy(1);
             destroy();
         }
     }

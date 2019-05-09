@@ -4,6 +4,7 @@ import com.codecool.snake.entities.enemies.WillFerrellEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
+import com.codecool.snake.entities.snakes.SnakeBody;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
@@ -26,9 +27,10 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnSimpleEnemy(0);
-        spawnWillFerrellEnemy(1);
-        spawnPowerUps(4);
+
+        spawnSimpleEnemy(4);
+        spawnWillFerrellEnemy(4);
+        spawnPowerUps(20);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -45,7 +47,7 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnSimpleEnemy(int numberOfEnemies) {
+    public void spawnSimpleEnemy(int numberOfEnemies) {
         for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
