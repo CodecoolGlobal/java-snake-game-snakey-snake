@@ -1,7 +1,10 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.Police;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.powerups.PowerUp3;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.PowerUp2;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
@@ -10,8 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
-
-import java.awt.*;
 
 
 public class Game extends Pane {
@@ -49,8 +50,12 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(4);
-        spawnPowerUps(4);
+        spawnEnemies(2);
+        spawnPolice(2);
+        spawnPowerUps(2);
+        spawnPowerUps2(3);
+        spawnPowerUps3(2);
+
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -72,9 +77,18 @@ public class Game extends Pane {
         for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
+    private void spawnPolice(int numberOfPolice) { for (int i = 0; i < numberOfPolice; ++i) new Police(); }
+
     void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
+
+    private void spawnPowerUps2(int numberOfPowerUps2) {
+        for(int i = 0; i < numberOfPowerUps2; ++i) new PowerUp2();
+    }
+
+    private void spawnPowerUps3(int numberOfPowerUps3) {for(int i = 0; i < numberOfPowerUps3; ++i) new PowerUp3(); }
+
 
     private void setupInputHandling() {
         Scene scene = getScene();

@@ -67,13 +67,7 @@ public class Snake implements Animatable {
 
             if (head.isOutOfBounds() || health <= 0) {
                 System.out.println("Game Over");
-                Globals.getInstance().stopGame();
-            Text  over = new Text("Game Over \n Press the 'Restart' Button");
-            over.setFill(Color.GREEN);
-            over.setStyle("-fx-font: 65 arial;");
-            over.setY(Globals.WINDOW_HEIGHT-300);
-            over.setX(Globals.WINDOW_WIDTH-700);
-            Globals.getInstance().display.add(over);
+                SnakeHead.gameOver();
 
             }
     }
