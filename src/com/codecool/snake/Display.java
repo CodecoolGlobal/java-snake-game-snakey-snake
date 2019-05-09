@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import java.util.List;
 
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
@@ -45,5 +46,9 @@ public class Display {
 
     public void add(Text over) {
         displayPane.getChildren().add(over);
+    }
+
+    public void add(ProgressBar progressBar) {
+    displayPane.getChildren().add(progressBar);
     }
 }

@@ -7,7 +7,9 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
-import javafx.scene.paint.Color;
+import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.Background;
 import javafx.scene.text.Text;
 
 import com.sun.javafx.geom.Vec2d;
@@ -15,20 +17,28 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import jdk.nashorn.internal.objects.Global;
 
+import static javafx.scene.paint.Color.GREEN;
+
 
 public class Snake implements Animatable {
     private static final float speed = 2;
+
+    public int getHealth() {
+        return health;
+    }
+
     private int health = 100;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
 
-    public Snake(Vec2d position) {
+    public Snake(Vec2d position){
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
 
         addPart(4);
+        healthBar();
     }
 
     public void step() {
@@ -41,6 +51,15 @@ public class Snake implements Animatable {
         body.doPendingModifications();
 
     }
+
+    public void healthBar(){
+        ProgressBar progressBar = new ProgressBar();
+        progressBar.setProgress(health/100);
+        progressBar.setLayoutX(100);
+        progressBar.setLayoutY(0);
+        Globals.getInstance().display.add(progressBar);
+    }
+
 
     public void stepForOtherSnake() {
         SnakeControl turnDir = getUserInputForOtherSnake();
@@ -78,8 +97,10 @@ public class Snake implements Animatable {
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
 
-    public void changeHealth(int diff) {
+    public int  changeHealth(int diff) {
         health += diff;
+       int  currentHealth = health;
+        return currentHealth;
     }
 
     private void checkForGameOverConditions() {
@@ -88,7 +109,7 @@ public class Snake implements Animatable {
                 System.out.println("Game Over");
                 Globals.getInstance().stopGame();
             Text  over = new Text("Game Over \n Press the 'Restart' Button");
-            over.setFill(Color.GREEN);
+            over.setFill(GREEN);
             over.setStyle("-fx-font: 65 arial;");
             over.setY(Globals.WINDOW_HEIGHT-300);
             over.setX(Globals.WINDOW_WIDTH-700);
