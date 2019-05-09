@@ -101,9 +101,10 @@ public class Game extends Pane {
 
 
     public void setTableBackground(Image tableBackground) {
+        BackgroundSize bgSize = new BackgroundSize(Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT, false, false, false, false);
         setBackground(new Background(new BackgroundImage(tableBackground,
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+                BackgroundPosition.CENTER, bgSize)));
     }
 
 
