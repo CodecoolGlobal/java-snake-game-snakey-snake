@@ -18,8 +18,8 @@ public class PowerUp2 extends GameEntity implements Interactable {
     public PowerUp2() {
         setImage(Globals.getInstance().getImage("PowerUp2"));
 
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setX(rnd.nextDouble() * (Globals.PLAYABLE_WIDTH_END - Globals.PLAYABLE_WIDTH_START) + 1);
+        setY(rnd.nextDouble() * (Globals.PLAYABLE_HEIGHT_END - Globals.PLAYABLE_HEIGHT_START) + 1);
 
         double direction = rnd.nextDouble() * 180;
 

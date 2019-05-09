@@ -13,6 +13,11 @@ public class Globals {
     public static final double WINDOW_WIDTH = 1278;
     public static final double WINDOW_HEIGHT = 720;
 
+    public static final double PLAYABLE_WIDTH_START = 132;
+    public static final double PLAYABLE_WIDTH_END = 1075;
+    public static final double PLAYABLE_HEIGHT_START = 68;
+    public static final double PLAYABLE_HEIGHT_END = 557;
+
     public Display display;
     public Game game;
     public Random random = new Random();
