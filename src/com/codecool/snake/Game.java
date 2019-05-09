@@ -50,7 +50,6 @@ public class Game extends Pane {
 
 
     public void init() {
-        SimplePowerUp.numOfPowerUps = 0;
         spawnSnake();
         spawnEnemies(2);
         spawnPolice(2);
