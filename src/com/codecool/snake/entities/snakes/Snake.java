@@ -68,6 +68,9 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+        if (health > 100) {
+            health = 100;
+        }
     }
 
     public int getHealth() {
