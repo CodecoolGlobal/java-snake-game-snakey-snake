@@ -48,8 +48,8 @@ public class SnakeBody extends GameEntity implements Interactable{
     public boolean equals(Object obj) {
         if (obj instanceof SnakeBody) {
             if(((SnakeBody) obj).getBodyPartID() == this.getBodyPartID()) {
-                System.out.println("ID 1: "+((SnakeBody) obj).getBodyPartID());
-                System.out.println("ID 2: "+this.getBodyPartID());
+                //System.out.println("ID 1: "+((SnakeBody) obj).getBodyPartID());
+                //System.out.println("ID 2: "+this.getBodyPartID());
                 return true;
             }
         }

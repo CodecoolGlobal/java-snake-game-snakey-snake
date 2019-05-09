@@ -45,7 +45,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if(entity instanceof SimplePowerUp){
             System.out.println(getMessage());
-            snake.addPart(4);
+            snake.addPart(15);
         }
 
         if(entity instanceof SnakeBody && !entity.equals(snake.getNeck())) {
