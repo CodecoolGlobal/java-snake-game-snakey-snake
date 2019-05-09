@@ -46,10 +46,14 @@ public class GameLoop {
 
     private void checkPowerUps() {
         List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
+        int numOfPowerUp = 0;
         for (int i = 0; i < gameObjs.size(); i++) {
-            if (SimplePowerUp.getNumOfPowerUps() <= 2) {
-                Globals.getInstance().game.spawnPowerUps(Globals.getInstance().random.nextInt(5));
+            if (gameObjs.get(i) instanceof SimplePowerUp) {
+                numOfPowerUp++;
             }
+        }
+        if (numOfPowerUp <= 2) {
+            Globals.getInstance().game.spawnPowerUps(Globals.getInstance().random.nextInt(5) +1);
         }
     }
 

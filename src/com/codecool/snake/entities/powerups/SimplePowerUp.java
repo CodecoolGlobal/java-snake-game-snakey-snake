@@ -10,7 +10,7 @@ import java.util.Random;
 public class SimplePowerUp extends GameEntity implements Interactable {
     private static Random rnd = new Random();
 
-    private static int numOfPowerUps = 0;
+    public static int numOfPowerUps = 0;
 
 
     public SimplePowerUp() {
