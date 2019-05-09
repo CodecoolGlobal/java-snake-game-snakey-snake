@@ -42,21 +42,7 @@ public class SnakeBody extends GameEntity implements Interactable{
     public String getMessage() {
         return null;
     }
-/*
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof SnakeBody) {
-            if(((SnakeBody) obj).getBodyPartID() == this.getBodyPartID()) {
-                //System.out.println("ID 1: "+((SnakeBody) obj).getBodyPartID());
-                //System.out.println("ID 2: "+this.getBodyPartID());
-                return true;
-            }
-        }
-        return false;
-    }
 
-
- */
     public int getBodyPartID() {
         return bodyPartID;
     }

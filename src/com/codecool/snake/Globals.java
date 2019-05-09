@@ -10,8 +10,8 @@ import java.util.Random;
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1350;
-    public static final double WINDOW_HEIGHT = 750;
+    public static final double WINDOW_WIDTH = 1278;
+    public static final double WINDOW_HEIGHT = 720;
 
     public Display display;
     public Game game;

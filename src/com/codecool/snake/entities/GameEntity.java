@@ -26,8 +26,8 @@ public abstract class GameEntity extends ImageView {
     }
 
     public boolean isOutOfBounds() {
-        if (getX() > 1110 || getX() < 115 ||
-            getY() > Globals.WINDOW_HEIGHT || getY() < 0) {
+        if (getX() > 1140 || getX() < 128 ||
+            getY() > 955 || getY() < 68) {
             return true;
         }
         else { return false; }

@@ -75,9 +75,9 @@ public class SnakeHead extends GameEntity implements Interactable {
         Globals.getInstance().stopGame();
         Text over = new Text("Game Over \n Press the 'Restart' Button");
         over.setFill(Color.GREEN);
-        over.setStyle("-fx-font: 65 arial;");
-        over.setY(Globals.WINDOW_HEIGHT-300);
-        over.setX(Globals.WINDOW_WIDTH-700);
+        over.setStyle("-fx-font: 55 arial;");
+        over.setY(300);
+        over.setX(300);
         Globals.getInstance().display.add(over);
     }
 
