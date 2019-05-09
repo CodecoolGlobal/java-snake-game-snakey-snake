@@ -73,21 +73,21 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    void spawnEnemies(int numberOfEnemies) {
         for (int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
     }
 
-    private void spawnPolice(int numberOfPolice) { for (int i = 0; i < numberOfPolice; ++i) new Police(); }
+    void spawnPolice(int numberOfPolice) { for (int i = 0; i < numberOfPolice; ++i) new Police(); }
 
     void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
-    private void spawnPowerUps2(int numberOfPowerUps2) {
+    void spawnPowerUps2(int numberOfPowerUps2) {
         for(int i = 0; i < numberOfPowerUps2; ++i) new PowerUp2();
     }
 
-    private void spawnPowerUps3(int numberOfPowerUps3) {for(int i = 0; i < numberOfPowerUps3; ++i) new PowerUp3(); }
+    void spawnPowerUps3(int numberOfPowerUps3) {for(int i = 0; i < numberOfPowerUps3; ++i) new PowerUp3(); }
 
 
     private void setupInputHandling() {
