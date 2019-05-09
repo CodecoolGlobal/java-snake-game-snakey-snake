@@ -6,6 +6,8 @@ import java.util.List;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import javax.swing.*;
+
 
 public class Display {
     private Pane displayPane;
@@ -46,4 +48,6 @@ public class Display {
     public void add(Text over) {
         displayPane.getChildren().add(over);
     }
+
+
 }

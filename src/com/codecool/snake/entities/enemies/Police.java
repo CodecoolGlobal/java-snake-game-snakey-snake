@@ -40,6 +40,11 @@ public class Police  extends Enemy implements Animatable, Interactable {
     }
 
     @Override
+    public void stepForOtherSnake() {
+
+    }
+
+    @Override
     public void apply(GameEntity entity) {
         if (entity instanceof SnakeHead) {
             System.out.println(getMessage());
