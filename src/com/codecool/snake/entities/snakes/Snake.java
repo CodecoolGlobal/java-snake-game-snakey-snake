@@ -7,6 +7,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
@@ -14,6 +15,10 @@ import com.sun.javafx.geom.Vec2d;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import jdk.nashorn.internal.objects.Global;
+
+import javax.swing.*;
+
+import static java.awt.Color.cyan;
 
 
 public class Snake implements Animatable {
@@ -39,12 +44,31 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
+
+    }
+
+    public void stepForOtherSnake() {
+        SnakeControl turnDir = getUserInputForOtherSnake();
+        head.updateRotation(turnDir, speed);
+
+        updateSnakeBodyHistory();
+        checkForGameOverConditions();
+
+        body.doPendingModifications();
     }
 
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        return turnDir;
+    }
+
+
+    private SnakeControl getUserInputForOtherSnake(){
+        SnakeControl turnDir = SnakeControl.INVALID;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
     }
 
@@ -61,6 +85,7 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+
     }
 
     private void checkForGameOverConditions() {
