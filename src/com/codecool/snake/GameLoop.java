@@ -75,9 +75,6 @@ public class GameLoop {
         } else if (numOfPowerUps.get(2) <= 2) {
             Globals.getInstance().game.spawnPowerUps3(Globals.getInstance().random.nextInt(4) +1);
         }
-        if (numOfPowerUp <= 2) {
-            Globals.getInstance().game.spawnPowerUps(Globals.getInstance().random.nextInt(5) +1);
-        }
     }
 
     private void checkCollisions() {

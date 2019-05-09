@@ -67,7 +67,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         }
         if (entity instanceof PowerUp3) {
             System.out.println(getMessage());
-            snake.changeHealth(2);
+            snake.changeHealth(20);
         }
     }
 
