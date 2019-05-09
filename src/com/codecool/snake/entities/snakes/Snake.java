@@ -16,7 +16,6 @@ public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
 
-
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
     //public SnakeBody neck = (SnakeBody) body.getNeck();
@@ -51,7 +50,16 @@ public class Snake implements Animatable {
 
         for (int i = 0; i < numParts; i++) {
             SnakeBody newBodyPart = new SnakeBody(position);
-            newBodyPart.setBodyPartID(new Random().nextInt());
+            if (getLastPart() instanceof SnakeHead) {
+                newBodyPart.setBodyPartID(i);
+            } else {
+                SnakeBody tail = (SnakeBody) getLastPart();
+                if (tail.getBodyPartID() > 0) {
+                    newBodyPart.setBodyPartID(tail.getBodyPartID()+1);
+                } else {
+                    newBodyPart.setBodyPartID(i);
+                }
+            }
             body.add(newBodyPart);
 
         }

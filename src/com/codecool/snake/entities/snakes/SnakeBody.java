@@ -15,7 +15,6 @@ public class SnakeBody extends GameEntity implements Interactable{
     private int bodyPartID;
 
     public SnakeBody(Vec2d coord) {
-        bodyPartID ++;
         setImage(Globals.getInstance().getImage("SnakeBody"));
         setX(coord.x);
         setY(coord.y);
@@ -43,7 +42,7 @@ public class SnakeBody extends GameEntity implements Interactable{
     public String getMessage() {
         return null;
     }
-
+/*
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof SnakeBody) {
@@ -56,6 +55,8 @@ public class SnakeBody extends GameEntity implements Interactable{
         return false;
     }
 
+
+ */
     public int getBodyPartID() {
         return bodyPartID;
     }
