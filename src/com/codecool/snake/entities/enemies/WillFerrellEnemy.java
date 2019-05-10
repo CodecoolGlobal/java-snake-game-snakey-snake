@@ -25,10 +25,29 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
         super(25);
 
         setImage(Globals.getInstance().getImage("WillFerrellEnemy"));
+
+        double spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        while (Globals.PLAYABLE_WIDTH_START > spawnX || Globals.PLAYABLE_WIDTH_END < spawnX) {
+            spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        }
+
+        double spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        while (Globals.PLAYABLE_HEIGHT_START > spawnY || Globals.PLAYABLE_HEIGHT_END < spawnY) {
+            spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        }
+
+        setX(spawnX);
+        setY(spawnY);
+
+
+
+/*
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
 
+
+ */
         setRotate(direction);
 
         heading = Utils.directionToVector(direction, speed);

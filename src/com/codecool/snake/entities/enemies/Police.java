@@ -18,8 +18,20 @@ public class Police  extends Enemy implements Animatable, Interactable {
         super(0);
 
         setImage(Globals.getInstance().getImage("Police"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+
+
+        double spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        while (Globals.PLAYABLE_WIDTH_START > spawnX || Globals.PLAYABLE_WIDTH_END < spawnX) {
+            spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        }
+
+        double spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        while (Globals.PLAYABLE_HEIGHT_START > spawnY || Globals.PLAYABLE_HEIGHT_END < spawnY) {
+            spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        }
+
+        setX(spawnX);
+        setY(spawnY);
 
         double direction = rnd.nextDouble() * 180;
         setRotate(direction);
@@ -33,7 +45,7 @@ public class Police  extends Enemy implements Animatable, Interactable {
     public void step() {
 
         if (isOutOfBounds()) {
-            heading = Utils.directionToVector(90, 1);
+            destroy();
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());

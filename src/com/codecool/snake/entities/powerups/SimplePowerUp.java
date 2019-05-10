@@ -15,8 +15,19 @@ public class SimplePowerUp extends GameEntity implements Interactable {
     public SimplePowerUp() {
         setImage(Globals.getInstance().getImage("PowerUp1"));
 
-        setX(rnd.nextDouble() * (Globals.PLAYABLE_WIDTH_END - Globals.PLAYABLE_WIDTH_START) + 1);
-        setY(rnd.nextDouble() * (Globals.PLAYABLE_HEIGHT_END - Globals.PLAYABLE_HEIGHT_START) + 1);
+        double spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        while (Globals.PLAYABLE_WIDTH_START > spawnX || Globals.PLAYABLE_WIDTH_END < spawnX) {
+            spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        }
+
+        double spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        while (Globals.PLAYABLE_HEIGHT_START > spawnY || Globals.PLAYABLE_HEIGHT_END < spawnY) {
+            spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        }
+
+        setX(spawnX);
+        setY(spawnY);
+
     }
 
     @Override

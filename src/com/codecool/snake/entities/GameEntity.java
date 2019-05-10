@@ -34,14 +34,14 @@ public abstract class GameEntity extends ImageView {
     }
 
     public boolean collideVertical() {
-        if (getX() > Globals.WINDOW_WIDTH || getX() < 0) {
+        if (getX() > Globals.PLAYABLE_WIDTH_END|| getX() < Globals.PLAYABLE_WIDTH_START) {
             return true;
         }
         return false;
     }
 
     public boolean collideHorizontal() {
-        if (getY() > Globals.WINDOW_HEIGHT || getY() < 0) {
+        if (getY() > Globals.PLAYABLE_HEIGHT_END || getY() < Globals.PLAYABLE_HEIGHT_START) {
             return true;
         }
         return false;

@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -21,22 +22,38 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         super(10);
 
         setImage(Globals.getInstance().getImage("DicaprioEnemy"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+
+
+        spawn();
+
+    }
+
+    private void spawn() {
+        double spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        while (Globals.PLAYABLE_WIDTH_START > spawnX || Globals.PLAYABLE_WIDTH_END < spawnX) {
+            spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        }
+
+        double spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        while (Globals.PLAYABLE_HEIGHT_START > spawnY || Globals.PLAYABLE_HEIGHT_END < spawnY) {
+            spawnY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+        }
+
+        setX(spawnX);
+        setY(spawnY);
 
         double direction = rnd.nextDouble() * 180;
         setRotate(direction);
 
         int speed = 1;
         heading = Utils.directionToVector(direction, speed);
-
     }
 
     @Override
     public void step() {
 
         if (isOutOfBounds()) {
-            heading = Utils.directionToVector(super.getRotate() * -0.5, 1);
+            spawn();
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
