@@ -26,6 +26,7 @@ public class Main extends Application {
         primaryStage.show();
 
         game.start();
+        game.restart();
     }
 
     @Override
