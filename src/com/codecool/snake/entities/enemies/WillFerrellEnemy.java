@@ -22,7 +22,7 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
     private double direction = rnd.nextDouble() * 360;
 
     public WillFerrellEnemy() {
-        super(25);
+        super(15);
 
         setImage(Globals.getInstance().getImage("WillFerrellEnemy"));
 

@@ -26,7 +26,6 @@ public class Game extends Pane {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
-
         init();
     }
 
@@ -61,6 +60,7 @@ public class Game extends Pane {
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
+        restart();
     }
 
     public void start() {
