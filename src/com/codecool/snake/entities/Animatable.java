@@ -5,5 +5,4 @@ package com.codecool.snake.entities;
 public interface Animatable {
 
     void step();
-    void stepForOtherSnake();
 }

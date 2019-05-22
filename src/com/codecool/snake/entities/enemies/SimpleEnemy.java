@@ -59,15 +59,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         setY(getY() + heading.getY());
     }
 
-    @Override
-    public void stepForOtherSnake() {
-        if (isOutOfBounds()) {
-            Globals.getInstance().game.spawnSimpleEnemy(1);
-            destroy();
-        }
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
-    }
+
 
 
 

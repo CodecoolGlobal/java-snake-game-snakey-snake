@@ -26,14 +26,18 @@ import java.util.Random;
 public class Snake implements Animatable {
     private static float speed = 2;
     private int health = 100;
+    KeyCode left = null;
+    KeyCode right = null;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
-    //public SnakeBody neck = (SnakeBody) body.getNeck();
 
-    public Snake(Vec2d position) {
+
+    public Snake(Vec2d position, KeyCode LEFT, KeyCode RIGHT) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
+        this.left = LEFT;
+        this.right = RIGHT;
 
         addPart(4);
     }
@@ -49,30 +53,16 @@ public class Snake implements Animatable {
 
     }
 
-    public void stepForOtherSnake() {
-        SnakeControl turnDir = getUserInputForOtherSnake();
-        head.updateRotation(turnDir, speed);
 
-        updateSnakeBodyHistory();
-        checkForGameOverConditions();
-
-        body.doPendingModifications();
-    }
 
     private SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
+        if(InputHandler.getInstance().isKeyPressed(this.left)) turnDir = SnakeControl.TURN_LEFT;
+        if(InputHandler.getInstance().isKeyPressed(this.right)) turnDir = SnakeControl.TURN_RIGHT;
         return turnDir;
     }
 
 
-    private SnakeControl getUserInputForOtherSnake(){
-        SnakeControl turnDir = SnakeControl.INVALID;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.A)) turnDir = SnakeControl.TURN_LEFT;
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.D)) turnDir = SnakeControl.TURN_RIGHT;
-        return turnDir;
-    }
 
     public void addPart(int numParts) {
         GameEntity parent = getLastPart();

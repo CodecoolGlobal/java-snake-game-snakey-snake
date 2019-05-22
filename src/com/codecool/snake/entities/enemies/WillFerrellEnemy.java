@@ -74,9 +74,7 @@ public class WillFerrellEnemy extends Enemy implements Animatable, Interactable 
             setY(getY() + heading.getY());
     }
 
-    @Override
-    public void stepForOtherSnake() {
-    }
+
 
     @Override
     public void apply(GameEntity entity) {
