@@ -56,6 +56,10 @@ public class DelayedModificationList<T> {
         return null;
     }
 
+    public T getNeck() {
+        return objects.get(0);
+    }
+
     public void clear() {
         objects.clear();
         newObjects.clear();

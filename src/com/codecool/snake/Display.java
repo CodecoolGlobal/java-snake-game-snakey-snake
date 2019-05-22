@@ -4,6 +4,9 @@ import com.codecool.snake.entities.GameEntity;
 import java.util.List;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+
+import javax.swing.*;
 
 
 public class Display {
@@ -41,4 +44,10 @@ public class Display {
         displayPane.getChildren().clear();
         gameObjects.clear();
     }
+
+    public void add(Text over) {
+        displayPane.getChildren().add(over);
+    }
+
+
 }

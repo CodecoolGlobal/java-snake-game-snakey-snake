@@ -6,29 +6,26 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
-
 import java.util.Random;
 
 import javafx.geometry.Point2D;
 
 
-public class SimpleEnemy extends Enemy implements Animatable, Interactable {
+
+public class WillFerrellEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
+    private double speed = 3;
+    private double direction = rnd.nextDouble() * 360;
 
-    public SimpleEnemy() {
-        super(10);
+    public WillFerrellEnemy() {
+        super(25);
 
-        setImage(Globals.getInstance().getImage("DicaprioEnemy"));
+        setImage(Globals.getInstance().getImage("WillFerrellEnemy"));
 
-
-        spawn();
-
-    }
-
-    private void spawn() {
         double spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
         while (Globals.PLAYABLE_WIDTH_START > spawnX || Globals.PLAYABLE_WIDTH_END < spawnX) {
             spawnX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
@@ -42,40 +39,50 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         setX(spawnX);
         setY(spawnY);
 
-        double direction = rnd.nextDouble() * 180;
+
+
+/*
+        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+
+
+
+ */
         setRotate(direction);
 
-        int speed = 1;
         heading = Utils.directionToVector(direction, speed);
     }
 
     @Override
     public void step() {
-
         if (isOutOfBounds()) {
-            spawn();
+            /*if (direction - 180 < 0) {
+                direction += 360;
+            }*/
+
+            if (collideVertical()) {
+                direction = 180 - (direction - 180);
+            }
+
+            if (collideHorizontal()) {
+                    direction = 180 - direction;
+            }
+            speed += 0.2;
+            heading = Utils.directionToVector(direction, speed);
         }
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
+            setX(getX() + heading.getX());
+            setY(getY() + heading.getY());
     }
 
     @Override
     public void stepForOtherSnake() {
-        if (isOutOfBounds()) {
-            Globals.getInstance().game.spawnSimpleEnemy(1);
-            destroy();
-        }
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
     }
-
-
 
     @Override
     public void apply(GameEntity entity) {
-        if (entity instanceof SnakeHead) {
+        if(entity instanceof SnakeHead){
             System.out.println(getMessage());
-            Globals.getInstance().game.spawnSimpleEnemy(1);
+            //Globals.getInstance().game.spawnWillFerrellEnemy(1);
             destroy();
         }
     }
