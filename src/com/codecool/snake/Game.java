@@ -13,11 +13,13 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 
 public class Game extends Pane {
     private Snake snake = null;
+    private Snake snake2 = null;
     private Snake secondSnake = null;
     private GameTimer gameTimer = new GameTimer();
 
@@ -56,7 +58,7 @@ public class Game extends Pane {
         spawnPowerUps2(3);
         spawnPowerUps3(2);
 
-        GameLoop gameLoop = new GameLoop(snake, secondSnake);
+        GameLoop gameLoop = new GameLoop(snake, snake2);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
@@ -69,7 +71,8 @@ public class Game extends Pane {
     }
 
     private void spawnSnake() {
-        snake = new Snake(new Vec2d(500, 500));
+        snake = new Snake(new Vec2d(500, 500), KeyCode.A, KeyCode.D);
+        snake2 = new Snake(new Vec2d(300, 500), KeyCode.LEFT, KeyCode.RIGHT);
     }
 
     public void spawnSimpleEnemy(int numberOfEnemies) {
