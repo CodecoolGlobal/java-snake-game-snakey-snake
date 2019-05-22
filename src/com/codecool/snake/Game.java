@@ -16,7 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 
-
 public class Game extends Pane {
     private Snake snake = null;
     private Snake secondSnake = null;
@@ -30,7 +29,6 @@ public class Game extends Pane {
 
         init();
     }
-
 
     public void restart() {
 
@@ -49,8 +47,7 @@ public class Game extends Pane {
 
 
     }
-
-
+  
     public void init() {
         spawnSnake();
         spawnSimpleEnemy(3);
@@ -64,7 +61,6 @@ public class Game extends Pane {
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
-        restart();
     }
 
     public void start() {
@@ -74,7 +70,6 @@ public class Game extends Pane {
 
     private void spawnSnake() {
         snake = new Snake(new Vec2d(500, 500));
-//        secondSnake = new Snake(new Vec2d(600, 500));
     }
 
     public void spawnSimpleEnemy(int numberOfEnemies) {
@@ -93,6 +88,7 @@ public class Game extends Pane {
 
     void spawnPowerUps2(int numberOfPowerUps2) {
         for(int i = 0; i < numberOfPowerUps2; ++i) new PowerUp2();
+
     }
 
     void spawnPowerUps3(int numberOfPowerUps3) {for(int i = 0; i < numberOfPowerUps3; ++i) new PowerUp3(); }
@@ -104,13 +100,10 @@ public class Game extends Pane {
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
     }
 
-
     public void setTableBackground(Image tableBackground) {
         BackgroundSize bgSize = new BackgroundSize(Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT, false, false, false, false);
         setBackground(new Background(new BackgroundImage(tableBackground,
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER, bgSize)));
     }
-
-
 }
